@@ -1907,7 +1907,7 @@ EXPORT void *memccpy(void *restrict dst, const void *restrict src, int value, si
     if (unlikely(dst < (src + len) && (dst + len) > src)) {
         fatal_error("memccpy overlap");
     }
-    if (unlikely(len > malloc_object_size(src) && value != 0)) {
+    if (unlikely(value != '\0' && len > malloc_object_size(src))) {
         fatal_error("memccpy read overflow");
     }
     if (unlikely(len > malloc_object_size(dst))) {
