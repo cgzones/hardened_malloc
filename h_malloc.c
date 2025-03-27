@@ -13,6 +13,7 @@
 #include "third_party/libdivide.h"
 
 #include "h_malloc.h"
+#include "internal.h"
 #include "memory.h"
 #include "memtag.h"
 #include "mutex.h"
@@ -1888,7 +1889,7 @@ EXPORT void *memcpy(void *restrict dst, const void *restrict src, size_t len) {
     if (unlikely(dst == src || len == 0)) {
         return dst;
     }
-    if (unlikely(dst < src + len && dst + len > src)) {
+    if (unlikely(dst < (src + len) && (dst + len) > src)) {
         fatal_error("memcpy overlap");
     }
     if (unlikely(len > malloc_object_size(src))) {
@@ -1928,7 +1929,7 @@ EXPORT wchar_t *wmemcpy(wchar_t *restrict dst, const wchar_t *restrict src, size
         return dst;
     }
     size_t lenAdj = len * sizeof(wchar_t);
-    if (unlikely(dst < src + lenAdj && dst + lenAdj > src)) {
+    if (unlikely(dst < (src + len) && (dst + len) > src)) {
         fatal_error("wmemcpy overlap");
     }
     if (unlikely(lenAdj > malloc_object_size(src))) {

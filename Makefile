@@ -127,7 +127,7 @@ $(OUT):
 
 $(OUT)/chacha.o: chacha.c chacha.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
-$(OUT)/h_malloc.o: h_malloc.c include/h_malloc.h mutex.h memory.h $(BOSC_EXTRAS) pages.h random.h util.h $(CONFIG_FILE) | $(OUT)
+$(OUT)/h_malloc.o: h_malloc.c include/h_malloc.h internal.h mutex.h memory.h $(BOSC_EXTRAS) pages.h random.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
 $(OUT)/memory.o: memory.c memory.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
@@ -135,7 +135,7 @@ $(OUT)/new.o: new.cc include/h_malloc.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.cc) $(OUTPUT_OPTION) $<
 $(OUT)/pages.o: pages.c pages.h memory.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
-$(OUT)/random.o: random.c random.h chacha.h util.h $(CONFIG_FILE) | $(OUT)
+$(OUT)/random.o: random.c random.h chacha.h internal.h util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
 $(OUT)/util.o: util.c util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
