@@ -238,19 +238,19 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "realloc_init")
         self.assertEqual(returncode, 0)
 
-    #def test_memcpy_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memcpy_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memcpy buffer overflow\n")
+    def test_memcpy_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memcpy_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memcpy buffer overflow\n")
 
-    #def test_memcpy_read_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memcpy_read_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memcpy read overflow\n")
+    def test_memcpy_read_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memcpy_read_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memcpy read overflow\n")
 
     def test_memcpy_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
@@ -262,19 +262,19 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "memcpy_valid_mismatched")
         self.assertEqual(returncode, 0)
 
-    #def test_memccpy_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memccpy_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memccpy buffer overflow\n")
+    def test_memccpy_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memccpy_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memccpy buffer overflow\n")
 
-    #def test_memccpy_read_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memccpy_read_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memccpy read overflow\n")
+    def test_memccpy_read_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memccpy_read_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memccpy read overflow\n")
 
     def test_memccpy_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
@@ -286,20 +286,19 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "memccpy_valid_mismatched")
         self.assertEqual(returncode, 0)
 
+    def test_memmove_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memmove_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memmove buffer overflow\n")
 
-    #def test_memmove_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memmove_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memmove buffer overflow\n")
-
-    #def test_memmove_read_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memmove_read_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memmove read overflow\n")
+    def test_memmove_read_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memmove_read_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memmove read overflow\n")
 
     def test_memmove_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
@@ -311,26 +310,36 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "memmove_valid_mismatched")
         self.assertEqual(returncode, 0)
 
-    #def test_memset_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "memset_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: memset buffer overflow\n")
+    def test_memset_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "memset_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: memset buffer overflow\n")
 
-    #def test_wmemcpy_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "wmemcpy_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: wmemcpy buffer overflow\n")
+    def test_memset_valid_same(self):
+        _stdout, _stderr, returncode = self.run_test(
+            "memset_valid_same")
+        self.assertEqual(returncode, 0)
 
-    #def test_wmemcpy_read_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "wmemcpy_read_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: wmemcpy read overflow\n")
+    def test_memset_valid_mismatched(self):
+        _stdout, _stderr, returncode = self.run_test(
+            "memset_valid_mismatched")
+        self.assertEqual(returncode, 0)
+
+    def test_wmemcpy_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "wmemcpy_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: wmemcpy buffer overflow\n")
+
+    def test_wmemcpy_read_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "wmemcpy_read_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: wmemcpy read overflow\n")
 
     def test_wmemcpy_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
@@ -342,19 +351,19 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "wmemcpy_valid_mismatched")
         self.assertEqual(returncode, 0)
 
-    #def test_wmemmove_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "wmemmove_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: wmemmove buffer overflow\n")
+    def test_wmemmove_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "wmemmove_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: wmemmove buffer overflow\n")
 
-    #def test_wmemmove_read_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "wmemmove_read_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: wmemmove read overflow\n")
+    def test_wmemmove_read_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "wmemmove_read_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: wmemmove read overflow\n")
 
     def test_wmemmove_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
@@ -366,12 +375,12 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
             "wmemmove_valid_mismatched")
         self.assertEqual(returncode, 0)
 
-    #def test_wmemset_buffer_overflow(self):
-    #    _stdout, stderr, returncode = self.run_test(
-    #        "wmemset_buffer_overflow")
-    #    self.assertEqual(returncode, -6)
-    #    self.assertEqual(stderr.decode(
-    #        "utf-8"), "fatal allocator error: wmemset buffer overflow\n")
+    def test_wmemset_buffer_overflow(self):
+        _stdout, stderr, returncode = self.run_test(
+            "wmemset_buffer_overflow")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode(
+            "utf-8"), "fatal allocator error: wmemset buffer overflow\n")
 
     def test_wmemset_valid_same(self):
         _stdout, _stderr, returncode = self.run_test(
