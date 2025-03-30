@@ -41,7 +41,7 @@ LDFLAGS := $(LDFLAGS) -Wl,-O1,--as-needed,-z,defs,-z,relro,-z,now,-z,nodlopen,-z
 
 SOURCES := chacha.c h_malloc.c memory.c pages.c random.c util.c
 ifeq ($(CONFIG_BLOCK_OPS_CHECK_SIZE),true)
-    SOURCES += memcpy.c memmove.c memset.c wmemset.c
+    SOURCES += memcpy.c memccpy.c memmove.c memset.c wmemset.c
     BOSC_EXTRAS := musl.h
 endif
 OBJECTS := $(SOURCES:.c=.o)
@@ -141,6 +141,8 @@ $(OUT)/util.o: util.c util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
 
 $(OUT)/memcpy.o: memcpy.c musl.h $(CONFIG_FILE) | $(OUT)
+	$(COMPILE.c) -Wno-cast-align $(OUTPUT_OPTION) $<
+$(OUT)/memccpy.o: memccpy.c musl.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) -Wno-cast-align $(OUTPUT_OPTION) $<
 $(OUT)/memmove.o: memmove.c musl.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) -Wno-cast-align $(OUTPUT_OPTION) $<

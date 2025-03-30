@@ -72,6 +72,10 @@ EXECUTABLES := \
     memcpy_read_overflow \
     memcpy_valid_same \
     memcpy_valid_mismatched \
+    memccpy_buffer_overflow \
+    memccpy_read_overflow \
+    memccpy_valid_same \
+    memccpy_valid_mismatched \
     memmove_buffer_overflow \
     memmove_read_overflow \
     memmove_valid_same \

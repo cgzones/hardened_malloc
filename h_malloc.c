@@ -1901,6 +1901,22 @@ EXPORT void *memcpy(void *restrict dst, const void *restrict src, size_t len) {
     return musl_memcpy(dst, src, len);
 }
 
+EXPORT void *memccpy(void *restrict dst, const void *restrict src, int value, size_t len) {
+    if (unlikely(dst == src || len == 0)) {
+        return dst;
+    }
+    if (unlikely(dst < (src + len) && (dst + len) > src)) {
+        fatal_error("memccpy overlap");
+    }
+    if (unlikely(len > malloc_object_size(src))) {
+        fatal_error("memccpy read overflow");
+    }
+    if (unlikely(len > malloc_object_size(dst))) {
+        fatal_error("memccpy buffer overflow");
+    }
+    return musl_memccpy(dst, src, value, len);
+}
+
 EXPORT void *memmove(void *dst, const void *src, size_t len) {
     if (unlikely(dst == src || len == 0)) {
         return dst;

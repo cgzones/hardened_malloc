@@ -57,6 +57,7 @@ void h_free(void *ptr);
 
 #if CONFIG_BLOCK_OPS_CHECK_SIZE && !defined(HAS_ARM_MTE)
 void *memcpy(void *dst, const void *src, size_t len);
+void *memccpy(void *dst, const void *src, int value, size_t len);
 void *memmove(void *dst, const void *src, size_t len);
 void *memset(void *dst, int value, size_t len);
 wchar_t *wmemcpy(wchar_t *dst, const wchar_t *src, size_t len);
