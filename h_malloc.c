@@ -1946,6 +1946,10 @@ EXPORT void *memmove(void *dst, const void *src, size_t len) {
     return musl_memmove(dst, src, len);
 }
 
+EXPORT void *mempcpy(void *restrict dst, const void *restrict src, size_t len) {
+    return memcpy(dst, src, len) + len;
+}
+
 EXPORT void *memset(void *dst, int value, size_t len) {
     if (unlikely(len == 0)) {
         return dst;
@@ -2006,6 +2010,10 @@ EXPORT wchar_t *wmemmove(wchar_t *dst, const wchar_t *src, size_t len) {
         fatal_error("wmemmove buffer overflow");
     }
     return (wchar_t *)musl_memmove((char *)dst, (const char *)src, lenAdj);
+}
+
+EXPORT wchar_t *wmempcpy(wchar_t *restrict dst, const wchar_t *restrict src, size_t len) {
+    return wmemcpy(dst, src, len) + len;
 }
 
 EXPORT wchar_t *wmemset(wchar_t *dst, wchar_t value, size_t len) {
