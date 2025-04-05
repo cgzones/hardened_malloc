@@ -60,6 +60,8 @@ void *memcpy(void *dst, const void *src, size_t len);
 void *memccpy(void *dst, const void *src, int value, size_t len);
 void *memmove(void *dst, const void *src, size_t len);
 void *memset(void *dst, int value, size_t len);
+void bcopy(const void *src, void *dst, size_t len);
+void swab(const void *src, void *dst, ssize_t len);
 wchar_t *wmemcpy(wchar_t *dst, const wchar_t *src, size_t len);
 wchar_t *wmemmove(wchar_t *dst, const wchar_t *src, size_t len);
 wchar_t *wmemset(wchar_t *dst, wchar_t value, size_t len);

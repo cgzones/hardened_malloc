@@ -1940,6 +1940,27 @@ EXPORT void *memset(void *dst, int value, size_t len) {
     return musl_memset(dst, value, len);
 }
 
+EXPORT void bcopy(const void *src, void *dst, size_t len) {
+    memmove(dst, src, len);
+}
+
+EXPORT void swab(const void *restrict src, void *restrict dst, ssize_t len) {
+    if (unlikely(len <= 0)) {
+        return;
+    }
+    size_t length = len;
+    if (unlikely(dst < (src + length) && (dst + length) > src)) {
+        fatal_error("swab overlap");
+    }
+    if (unlikely(length > malloc_object_size(src))) {
+        fatal_error("swab read overflow");
+    }
+    if (unlikely(length > malloc_object_size(dst))) {
+        fatal_error("swab buffer overflow");
+    }
+    return musl_swab(src, dst, len);
+}
+
 EXPORT wchar_t *wmemcpy(wchar_t *restrict dst, const wchar_t *restrict src, size_t len) {
     if (unlikely(dst == src || len == 0)) {
         return dst;
