@@ -169,6 +169,12 @@ class TestSimpleMemoryCorruption(unittest.TestCase):
         self.assertEqual(stderr.decode("utf-8"),
                          "fatal allocator error: invalid realloc\n")
 
+    def test_realloc_c23_undefined_behaviour(self):
+        _stdout, stderr, returncode = self.run_test("realloc_c23_undefined_behaviour")
+        self.assertEqual(returncode, -6)
+        self.assertEqual(stderr.decode("utf-8"),
+                         "fatal allocator error: invalid zero sized realloc\n")
+
     def test_write_after_free_large_reuse(self):
         _stdout, _stderr, returncode = self.run_test(
             "write_after_free_large_reuse")

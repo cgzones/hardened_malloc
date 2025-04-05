@@ -1523,6 +1523,11 @@ EXPORT void *h_calloc(size_t nmemb, size_t size) {
 }
 
 EXPORT void *h_realloc(void *old, size_t size) {
+    // deprecated in C17, UB since C23
+    if (unlikely(old != NULL && size == 0)) {
+        fatal_error("invalid zero sized realloc");
+    }
+
     size = adjust_size_for_canary(size);
     if (old == NULL) {
         return alloc(size);

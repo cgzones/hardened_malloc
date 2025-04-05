@@ -68,6 +68,7 @@ EXECUTABLES := \
     invalid_malloc_object_size_small_quarantine \
     impossibly_large_malloc \
     realloc_init \
+    realloc_c23_undefined_behaviour \
     memcpy_buffer_overflow \
     memcpy_read_overflow \
     memcpy_valid_same \

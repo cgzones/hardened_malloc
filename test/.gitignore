@@ -41,6 +41,7 @@ overflow_small_8_byte
 uninitialized_read_large
 uninitialized_read_small
 realloc_init
+realloc_c23_undefined_behaviour
 memcpy_buffer_overflow
 memcpy_read_overflow
 memcpy_valid_same
